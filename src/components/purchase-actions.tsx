@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "@tanstack/react-router";
-import { MessageSquareQuote, ShoppingCart, Zap } from "lucide-react";
+import { useNavigate } from "@tanstack/react-router";
+import { ShoppingCart, Zap } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { cart } from "@/lib/cart";
-import { STOCK_LABEL, discountPercent, hasDiscount, maxOrderQty, purchaseState, sellingPrice, stockState } from "@/lib/product-rules";
+import { STOCK_LABEL, discountPercent, hasDiscount, maxOrderQty, purchaseState, sellingPrice, stockState, unavailableReason } from "@/lib/product-rules";
 import { naira, type Product } from "@/lib/shop-types";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ export function PriceBlock({ product: p, size = "md" }: { product: Product; size
   const price = sellingPrice(p);
   const pct = discountPercent(p);
   if (price == null) {
-    return <p className={cn("font-heading font-semibold text-foreground", size === "lg" ? "text-2xl" : "text-lg")}>Price on request</p>;
+    return <p className={cn("font-heading font-semibold text-foreground", size === "lg" ? "text-2xl" : "text-lg")}>Price coming soon</p>;
   }
   return (
     <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
@@ -35,7 +35,6 @@ export function PriceBlock({ product: p, size = "md" }: { product: Product; size
 
 export function StockLabel({ product: p, className }: { product: Product; className?: string }) {
   const state = stockState(p);
-  if (sellingPrice(p) == null) return <span className={cn("shop-stock shop-stock-quote", className)}>Request a quote</span>;
   const lowStock = p.trackStock && p.stockQuantity > 0 && p.stockQuantity <= 5;
   return (
     <span className={cn("shop-stock", state !== "in_stock" && "shop-stock-out", state === "out_of_stock" && "shop-stock-none", className)}>
@@ -44,33 +43,19 @@ export function StockLabel({ product: p, className }: { product: Product; classN
   );
 }
 
-/** Add to Cart / Buy Now for purchasable products, Request a Quote for quote-only ones, status otherwise. */
+/** Every product shows Add to Cart and Buy Now; they are disabled (with a reason) when it can't be bought yet. */
 export function PurchaseActions({ product: p, quantity = 1, layout = "card" }: { product: Product; quantity?: number; layout?: "card" | "detail" }) {
   const navigate = useNavigate();
-  const state = purchaseState(p);
+  const canBuy = purchaseState(p) === "buy";
   const tall = layout === "detail" ? "h-13 text-base" : "h-11";
 
-  if (state === "quote") {
-    return (
-      <Button asChild className={cn("w-full rounded-xl font-bold", tall)}>
-        <Link to="/contact-us" search={{ product: p.name }}>
-          <MessageSquareQuote aria-hidden="true" /> Request a Quote
-        </Link>
-      </Button>
-    );
-  }
-  if (state === "unavailable") {
-    return (
-      <Button type="button" disabled variant="outline" className={cn("w-full rounded-xl font-bold", tall)}>
-        {STOCK_LABEL[stockState(p)] === "In stock" ? "Unavailable" : STOCK_LABEL[stockState(p)]}
-      </Button>
-    );
-  }
   return (
+    <div className="grid gap-2">
     <div className={cn("grid gap-2.5", layout === "detail" ? "sm:grid-cols-2" : "grid-cols-2")}>
       <Button
         type="button"
         variant="outline"
+        disabled={!canBuy}
         className={cn("rounded-xl font-bold", tall)}
         onClick={() => {
           addProductToCart(p, quantity);
@@ -81,11 +66,14 @@ export function PurchaseActions({ product: p, quantity = 1, layout = "card" }: {
       </Button>
       <Button
         type="button"
+        disabled={!canBuy}
         className={cn("rounded-xl font-bold", tall)}
         onClick={() => navigate({ to: "/checkout", search: { buy: p.slug, qty: quantity } })}
       >
         <Zap aria-hidden="true" /> Buy Now
       </Button>
+    </div>
+    {!canBuy && <p className="text-center text-xs font-bold text-muted-foreground">{unavailableReason(p)}</p>}
     </div>
   );
 }
