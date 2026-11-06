@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Check, Search, ShieldCheck, Star, Truck, Wrench } from "lucide-react";
+import { ArrowDownUp, Check, LayoutGrid, Search, ShieldCheck, Star, Truck, Wallet, Wrench, X } from "lucide-react";
 
 import { PriceBlock, PurchaseActions, StockLabel } from "@/components/purchase-actions";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { discountPercent, sellingPrice } from "@/lib/product-rules";
+import { PRICE_RANGES, inPriceRange, type PriceRange } from "@/lib/shop-filters";
 import { shopQuery } from "@/lib/shop.queries";
 import type { Product } from "@/lib/shop-types";
 
@@ -17,11 +19,15 @@ export function ProductShop({ limit }: { limit?: number } = {}) {
   const [category, setCategory] = useState<string>("All");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<Sort>("featured");
+  const [priceRange, setPriceRange] = useState<PriceRange>("all");
+  const filtered = category !== "All" || priceRange !== "all" || query.trim() !== "";
+  const clearFilters = () => { setQuery(""); setCategory("All"); setPriceRange("all"); };
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
     const list = products.filter(
       (p) => (category === "All" || p.categorySlug === category) &&
+        inPriceRange(sellingPrice(p), priceRange) &&
         (!q || p.name.toLowerCase().includes(q) || p.features.some((f) => f.value.toLowerCase().includes(q))),
     );
     // Products without a price yet sort to the end either way.
@@ -29,7 +35,7 @@ export function ProductShop({ limit }: { limit?: number } = {}) {
     if (sort === "price-asc") return [...list].sort((a, b) => price(a, 1) - price(b, 1));
     if (sort === "price-desc") return [...list].sort((a, b) => price(b, -1) - price(a, -1));
     return list;
-  }, [products, category, query, sort]);
+  }, [products, category, query, sort, priceRange]);
 
   return (
     <section id="shop" className="section-space scroll-mt-20 bg-card">
@@ -42,42 +48,70 @@ export function ProductShop({ limit }: { limit?: number } = {}) {
           <p className="text-lead lg:max-w-md lg:justify-self-end">Factory-direct equipment with professional installation available on every order.</p>
         </div>
 
-        <div className="shop-toolbar">
-          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Product categories">
-            <button type="button" role="tab" aria-selected={category === "All"} onClick={() => setCategory("All")} className="shop-chip">
-              All <span className="shop-chip-count">{products.length}</span>
-            </button>
-            {categories.map((c) => (
-              <button key={c.id} type="button" role="tab" aria-selected={category === c.slug} onClick={() => setCategory(c.slug)} className="shop-chip">
-                {c.name} <span className="shop-chip-count">{c.productCount}</span>
-              </button>
-            ))}
-          </div>
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <label className="admin-field w-full sm:w-64">
+        <div className="shop-filterbar">
+          <div className="shop-filter shop-filter-search">
+            <span className="shop-filter-label">Search</span>
+            <label className="shop-search">
               <Search aria-hidden="true" />
               <span className="sr-only">Search products</span>
-              <input type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search products" className="form-control" />
+              <input type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Panels, inverters, batteries…" />
             </label>
-            <label className="w-full sm:w-52">
-              <span className="sr-only">Sort products</span>
-              <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="form-control min-h-13 rounded-xl">
-                <option value="featured">Featured</option>
-                <option value="price-asc">Price: low to high</option>
-                <option value="price-desc">Price: high to low</option>
-              </select>
-            </label>
+          </div>
+          <div className="shop-filter">
+            <span className="shop-filter-label" id="filter-category">Category</span>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger aria-labelledby="filter-category" className="shop-select">
+                <span className="flex items-center gap-2 truncate"><LayoutGrid aria-hidden="true" className="size-4 text-brand" /><SelectValue /></span>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="All">All products ({products.length})</SelectItem>
+                {categories.map((c) => (
+                  <SelectItem key={c.id} value={c.slug}>{c.name} ({c.productCount})</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="shop-filter">
+            <span className="shop-filter-label" id="filter-price">Price</span>
+            <Select value={priceRange} onValueChange={(v) => setPriceRange(v as PriceRange)}>
+              <SelectTrigger aria-labelledby="filter-price" className="shop-select">
+                <span className="flex items-center gap-2 truncate"><Wallet aria-hidden="true" className="size-4 text-brand" /><SelectValue /></span>
+              </SelectTrigger>
+              <SelectContent>
+                {PRICE_RANGES.map((r) => <SelectItem key={r.value} value={r.value}>{r.label}</SelectItem>)}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="shop-filter">
+            <span className="shop-filter-label" id="filter-sort">Sort by</span>
+            <Select value={sort} onValueChange={(v) => setSort(v as Sort)}>
+              <SelectTrigger aria-labelledby="filter-sort" className="shop-select">
+                <span className="flex items-center gap-2 truncate"><ArrowDownUp aria-hidden="true" className="size-4 text-brand" /><SelectValue /></span>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="featured">Featured</SelectItem>
+                <SelectItem value="price-asc">Price: low to high</SelectItem>
+                <SelectItem value="price-desc">Price: high to low</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
-        <p className="mt-6 mb-5 text-sm text-muted-foreground" aria-live="polite">
-          Showing {visible.length} {visible.length === 1 ? "product" : "products"}
-        </p>
+        <div className="mt-6 mb-5 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-muted-foreground" aria-live="polite">
+            Showing {visible.length} {visible.length === 1 ? "product" : "products"}
+          </p>
+          {filtered && (
+            <button type="button" className="inline-flex items-center gap-1 text-sm font-bold text-brand hover:underline" onClick={clearFilters}>
+              <X className="size-4" aria-hidden="true" /> Clear filters
+            </button>
+          )}
+        </div>
 
         {visible.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-border p-12 text-center text-muted-foreground">
-            No products match your search.{" "}
-            <button type="button" className="font-bold text-brand hover:underline" onClick={() => { setQuery(""); setCategory("All"); }}>
+            No products match your filters.{" "}
+            <button type="button" className="font-bold text-brand hover:underline" onClick={clearFilters}>
               Clear filters
             </button>
           </div>
