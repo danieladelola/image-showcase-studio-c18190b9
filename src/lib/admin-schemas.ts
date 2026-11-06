@@ -39,7 +39,8 @@ export const productInputSchema = z
     categoryId: z.string().uuid().nullable(),
     shortDescription: z.string().trim().max(300).default(""),
     description: z.string().trim().max(5000).default(""),
-    quoteOnly: z.boolean(),
+    // Legacy flag: quote-only products no longer exist, so it is always saved as false.
+    quoteOnly: z.boolean().optional().transform(() => false),
     price: money("a regular price").nullable(),
     salePrice: money("a sale price").nullable(),
     installationFee: money("an installation fee").nullable(),
@@ -67,8 +68,8 @@ export const productInputSchema = z
     sortOrder: z.number().int().min(0).max(10000),
   })
   .superRefine((p, ctx) => {
-    if (!p.quoteOnly && p.price == null) {
-      ctx.addIssue({ code: "custom", path: ["price"], message: "Enter a regular price, or turn on Request a Quote." });
+    if (p.price == null) {
+      ctx.addIssue({ code: "custom", path: ["price"], message: "Enter a regular price. Every product is sold with Add to Cart and Buy Now." });
     }
     if (p.salePrice != null && (p.price == null || p.salePrice >= p.price)) {
       ctx.addIssue({ code: "custom", path: ["salePrice"], message: "Sale price must be lower than the regular price." });

@@ -106,7 +106,7 @@ function toForm(p: AdminProduct | null): Form {
     categoryId: p?.categoryId ?? "",
     shortDescription: p?.shortDescription ?? "",
     description: p?.description ?? "",
-    quoteOnly: p?.quoteOnly ?? false,
+    quoteOnly: false,
     price: money(p?.price ?? null),
     salePrice: money(p?.salePrice ?? null),
     installationFee: money(p?.installationFee ?? null),
@@ -135,7 +135,7 @@ function toInput(f: Form, status: ProductStatus) {
     categoryId: f.categoryId || null,
     shortDescription: f.shortDescription,
     description: f.description,
-    quoteOnly: f.quoteOnly,
+    quoteOnly: false,
     price: parseMoney(f.price),
     salePrice: parseMoney(f.salePrice),
     installationFee: parseMoney(f.installationFee),
@@ -327,14 +327,7 @@ function ProductEditor({ initial, categories }: { initial: AdminProduct | null; 
           </Section>
 
           <Section title="Pricing">
-            <ToggleRow
-              id="quote-only"
-              label="Request a Quote only"
-              description="Hide the price and show a Request a Quote button instead of Add to Cart."
-              checked={form.quoteOnly}
-              onChange={(v) => set("quoteOnly", v)}
-            />
-            <div className={cn("mt-4 grid gap-4 sm:grid-cols-3", form.quoteOnly && "opacity-60")}>
+            <div className="grid gap-4 sm:grid-cols-3">
               <Field label="Regular price (₦)" name="price" errors={errors}>
                 <input inputMode="numeric" className="admin-input" value={form.price} onChange={(e) => set("price", e.target.value)} placeholder="e.g. 650000" />
               </Field>

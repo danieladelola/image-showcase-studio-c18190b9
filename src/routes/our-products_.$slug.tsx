@@ -159,13 +159,6 @@ function ProductDetail({ product: p }: { product: Product }) {
 
               <PurchaseActions product={p} quantity={qty} layout="detail" />
 
-              {canBuy && (
-                <p className="text-sm text-muted-foreground">
-                  Ordering in bulk?{" "}
-                  <Link to="/contact-us" search={{ product: p.name }} className="font-bold text-brand hover:underline">Ask for a quote</Link>
-                </p>
-              )}
-
               <div className="pd-trust">
                 <div className="pd-trust-item"><Truck aria-hidden="true" /><strong>Delivery or pickup</strong><span>Options shown at checkout</span></div>
                 <div className="pd-trust-item"><ShieldCheck aria-hidden="true" /><strong>Secure payment</strong><span>Guest checkout via Paystack</span></div>
@@ -253,7 +246,7 @@ function RelatedProducts({ products }: { products: Product[] }) {
               </div>
               <div className="grid gap-1 p-4">
                 <span className="font-heading font-semibold">{r.name}</span>
-                <span className="text-sm text-muted-foreground">{sellingPrice(r) != null ? naira.format(sellingPrice(r)!) : "Price on request"}</span>
+                <span className="text-sm text-muted-foreground">{sellingPrice(r) != null ? naira.format(sellingPrice(r)!) : "Price coming soon"}</span>
                 {purchaseState(r) === "buy" && <span className="mt-1 inline-flex items-center gap-1 text-xs font-bold text-brand"><Check className="size-3.5" aria-hidden="true" /> Available</span>}
               </div>
             </Link>
