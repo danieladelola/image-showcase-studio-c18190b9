@@ -34,3 +34,7 @@
 - [x] Admin News menu, posts list (search, filters, publish, archive, delete) and writing page with SEO checklist.
 - [x] Public News page shows real posts with category filters; article page with share buttons and related posts.
 - [x] Editor and article styling; checks for keyword scoring; tested on desktop and phone.
+
+## Shop buttons (Nov 2026)
+- [x] Every product shows Add to Cart and Buy Now; Request a Quote removed from products and admin editor.
+- [ ] Prices for Air Conditioner, Chest Freezer, 55-inch TV, Petrol Generator — waiting on the user (buttons stay greyed out until priced).
