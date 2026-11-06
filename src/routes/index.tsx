@@ -12,6 +12,7 @@ import installImageSrc from "@/assets/ruwata-installation-team.webp";
 const installImage = { url: installImageSrc };
 import teamImageSrc from "@/assets/ruwata-field-team.png";
 const teamImage = { url: teamImageSrc };
+import appliancesImageSrc from "@/assets/home-appliances-card.jpg";
 import technicianImageSrc from "@/assets/ruwata-solar-technician.png";
 const technicianImage = { url: technicianImageSrc };
 
@@ -43,7 +44,7 @@ const solutions = [
 const products = [
   { title: "Solar panels", detail: "Capture energy from daylight.", image: installImage.url, alt: "RUWATA technicians installing solar panels" },
   { title: "Inverters", detail: "Convert solar energy into usable power.", image: technicianImage.url, alt: "Solar inverter being inspected by a RUWATA technician" },
-  { title: "Battery storage", detail: "Store energy for when you need it.", image: teamImage.url, alt: "RUWATA team planning a solar system with battery storage" },
+  { title: "Home appliances", detail: "ACs, freezers, TVs and generators.", image: appliancesImageSrc, alt: "Living room with air conditioner, smart TV, chest freezer and generator" },
 ];
 
 const trustPoints = [
