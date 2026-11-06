@@ -37,4 +37,7 @@
 
 ## Shop buttons (Nov 2026)
 - [x] Every product shows Add to Cart and Buy Now; Request a Quote removed from products and admin editor.
-- [ ] Prices for Air Conditioner, Chest Freezer, 55-inch TV, Petrol Generator — waiting on the user (buttons stay greyed out until priced).
+- [x] Prices for Air Conditioner, Chest Freezer, 55-inch TV, Petrol Generator (user asked for sample prices).
+- [ ] Give the 4 unpriced products sample prices.
+- [ ] Restyle shop filter as dropdowns and add a price filter.
+- [ ] Shorter top banner on Our Impact, About Us, Our Products, News, Contact Us.
