@@ -24,7 +24,7 @@ export function ProductShop({ limit }: { limit?: number } = {}) {
       (p) => (category === "All" || p.categorySlug === category) &&
         (!q || p.name.toLowerCase().includes(q) || p.features.some((f) => f.value.toLowerCase().includes(q))),
     );
-    // Quote-only products have no price, so they sort to the end either way.
+    // Products without a price yet sort to the end either way.
     const price = (p: Product, dir: 1 | -1) => sellingPrice(p) ?? (dir === 1 ? Infinity : -Infinity);
     if (sort === "price-asc") return [...list].sort((a, b) => price(a, 1) - price(b, 1));
     if (sort === "price-desc") return [...list].sort((a, b) => price(b, -1) - price(a, -1));
