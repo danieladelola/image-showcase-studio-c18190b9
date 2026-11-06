@@ -37,4 +37,7 @@
 
 ## Shop buttons (Nov 2026)
 - [x] Every product shows Add to Cart and Buy Now; Request a Quote removed from products and admin editor.
-- [ ] Prices for Air Conditioner, Chest Freezer, 55-inch TV, Petrol Generator — waiting on the user (buttons stay greyed out until priced).
+- [x] Prices for Air Conditioner, Chest Freezer, 55-inch TV, Petrol Generator (user asked for sample prices).
+- [x] Give the 4 unpriced products sample prices (AC ₦485k, freezer ₦420k, TV ₦520k, generator ₦390k).
+- [x] Restyle shop filter as dropdowns and add a price filter.
+- [x] Shorter top banner on Our Impact, About Us, Our Products, News, Contact Us.
