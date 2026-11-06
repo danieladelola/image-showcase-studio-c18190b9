@@ -60,8 +60,8 @@ export function ProductShop({ limit }: { limit?: number } = {}) {
           <div className="shop-filter">
             <span className="shop-filter-label" id="filter-category">Category</span>
             <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger aria-labelledby="filter-category" className="shop-select">
-                <span className="flex items-center gap-2 truncate"><LayoutGrid aria-hidden="true" className="size-4 text-brand" /><SelectValue /></span>
+              <SelectTrigger aria-labelledby="filter-category" className="shop-select h-12 justify-start gap-2 [&>span]:flex-1 [&>span]:text-left">
+                <LayoutGrid aria-hidden="true" className="size-4 shrink-0 text-brand" /><SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="All">All products ({products.length})</SelectItem>
@@ -74,8 +74,8 @@ export function ProductShop({ limit }: { limit?: number } = {}) {
           <div className="shop-filter">
             <span className="shop-filter-label" id="filter-price">Price</span>
             <Select value={priceRange} onValueChange={(v) => setPriceRange(v as PriceRange)}>
-              <SelectTrigger aria-labelledby="filter-price" className="shop-select">
-                <span className="flex items-center gap-2 truncate"><Wallet aria-hidden="true" className="size-4 text-brand" /><SelectValue /></span>
+              <SelectTrigger aria-labelledby="filter-price" className="shop-select h-12 justify-start gap-2 [&>span]:flex-1 [&>span]:text-left">
+                <Wallet aria-hidden="true" className="size-4 shrink-0 text-brand" /><SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {PRICE_RANGES.map((r) => <SelectItem key={r.value} value={r.value}>{r.label}</SelectItem>)}
@@ -85,8 +85,8 @@ export function ProductShop({ limit }: { limit?: number } = {}) {
           <div className="shop-filter">
             <span className="shop-filter-label" id="filter-sort">Sort by</span>
             <Select value={sort} onValueChange={(v) => setSort(v as Sort)}>
-              <SelectTrigger aria-labelledby="filter-sort" className="shop-select">
-                <span className="flex items-center gap-2 truncate"><ArrowDownUp aria-hidden="true" className="size-4 text-brand" /><SelectValue /></span>
+              <SelectTrigger aria-labelledby="filter-sort" className="shop-select h-12 justify-start gap-2 [&>span]:flex-1 [&>span]:text-left">
+                <ArrowDownUp aria-hidden="true" className="size-4 shrink-0 text-brand" /><SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="featured">Featured</SelectItem>
