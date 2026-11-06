@@ -291,6 +291,8 @@ export function ProductsPage() {
         </div>
       </section>
 
+      <ApplianceStrip eyebrow="More than solar" title="Shop ACs, freezers, TVs and generators too." />
+
       <ProductShop />
 
       <section className="about-purpose-band">
