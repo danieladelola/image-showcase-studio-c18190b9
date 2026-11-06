@@ -5,10 +5,10 @@ import { shopQuery } from "@/lib/shop.queries";
 export const Route = createFileRoute("/our-products")({
   head: () => ({ meta: [
     { title: "Our Products | RUWATA Solar" },
-    { name: "description", content: "Shop complete solar systems, solar panels, inverters, and battery storage supplied and installed by RUWATA." },
-    { name: "keywords", content: "buy solar panels Nigeria, solar inverters, lithium batteries, solar kits, solar shop, RUWATA products" },
+    { name: "description", content: "Shop solar systems, panels, inverters and batteries, plus air conditioners, freezers, TVs and generators from RUWATA." },
+    { name: "keywords", content: "buy solar panels Nigeria, solar inverters, lithium batteries, solar kits, buy AC Nigeria, chest freezer, smart LED TV, petrol generator, RUWATA products" },
     { property: "og:title", content: "Solar Products | RUWATA" },
-    { property: "og:description", content: "Solar panels, inverters, batteries and full systems with nationwide delivery." },
+    { property: "og:description", content: "Solar equipment, ACs, freezers, TVs and generators with nationwide delivery." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),

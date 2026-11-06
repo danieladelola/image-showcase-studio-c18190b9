@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "keywords",
         content:
-          "RUWATA, solar power Nigeria, solar installation, solar panels, inverters, lithium batteries, solar energy systems, off-grid solar, home solar, business solar",
+          "RUWATA, solar power Nigeria, solar installation, solar panels, inverters, lithium batteries, solar energy systems, off-grid solar, home solar, business solar, air conditioners, freezers, TVs, generators",
       },
       { property: "og:site_name", content: "RUWATA Solar" },
       { property: "og:locale", content: "en_NG" },
