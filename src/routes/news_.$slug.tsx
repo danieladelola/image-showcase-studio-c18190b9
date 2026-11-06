@@ -198,7 +198,7 @@ function ArticlePage() {
 
       {data.related.length > 0 && (
         <section className="section-space bg-card">
-          <div className="site-wrap grid gap-8">
+          <div className="site-wrap grid max-w-5xl gap-8">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div className="grid gap-3">
                 <span className="eyebrow">More from RUWATA</span>
@@ -206,7 +206,7 @@ function ArticlePage() {
               </div>
               <Link to="/news" className="inline-flex items-center gap-1.5 text-sm font-bold text-brand">All articles <ArrowRight className="size-4" aria-hidden="true" /></Link>
             </div>
-            <div className="grid gap-6 md:grid-cols-3">{data.related.map((p) => <PostCard key={p.id} post={p} />)}</div>
+            <div className={`grid gap-6 ${data.related.length >= 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>{data.related.map((p) => <PostCard key={p.id} post={p} />)}</div>
           </div>
         </section>
       )}
