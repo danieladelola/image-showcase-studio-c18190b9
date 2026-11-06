@@ -48,7 +48,7 @@ const steps: Array<{ name: string; sql: string }> = [
         END IF;
       END $$;
       UPDATE products SET image_alt = name WHERE image_url IS NOT NULL AND image_alt IS NULL;
-      UPDATE products SET quote_only = true WHERE price IS NULL;
+      UPDATE products SET quote_only = false WHERE quote_only;
 
       ALTER TABLE products ADD CONSTRAINT products_status_check CHECK (status IN ('draft', 'published', 'archived'));
       ALTER TABLE products ADD CONSTRAINT products_availability_check CHECK (availability IN ('in_stock', 'out_of_stock', 'preorder'));
