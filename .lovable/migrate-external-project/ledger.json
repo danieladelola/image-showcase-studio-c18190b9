@@ -10,22 +10,22 @@
     "capability": "database (self-hosted Postgres on Coolify)",
     "source": "DATABASE_URL / DATABASE_SSL",
     "outcome": "kept user's own database (prior user choice recorded in source)",
-    "status": "pending",
-    "next_action": "User adds DATABASE_URL (public address) and DATABASE_SSL secrets"
+    "status": "verified",
+    "next_action": null
   },
   {
     "capability": "existing records (catalogue, orders, posts, admin users)",
     "source": "user's Postgres",
     "outcome": "kept in place",
-    "status": "pending",
-    "next_action": "Verify shop and news pages load once the database is connected"
+    "status": "verified",
+    "next_action": null
   },
   {
     "capability": "admin sign-in, checkout, newsletter, quote form",
     "source": "src/lib/*.functions.ts",
     "outcome": "preserved",
     "status": "pending",
-    "next_action": "Verify after database connection"
+    "next_action": "User tries admin sign-in and a test order"
   },
   {
     "capability": "Paystack payments + webhook",
