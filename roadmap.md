@@ -41,3 +41,7 @@
 - [x] Give the 4 unpriced products sample prices (AC ₦485k, freezer ₦420k, TV ₦520k, generator ₦390k).
 - [x] Restyle shop filter as dropdowns and add a price filter.
 - [x] Shorter top banner on Our Impact, About Us, Our Products, News, Contact Us.
+
+## Nov 6 2026
+- [x] Rebrand the news article (post details) page.
+- [x] Shorten the homepage shop heading "Solar systems, appliances and backup power."
