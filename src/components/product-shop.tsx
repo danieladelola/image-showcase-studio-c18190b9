@@ -42,8 +42,8 @@ export function ProductShop({ limit }: { limit?: number } = {}) {
       <div className="site-wrap">
         <div className="mb-10 grid gap-4 lg:grid-cols-2 lg:items-end">
           <div className="grid gap-4">
-            <span className="eyebrow eyebrow-plain">Shop solar</span>
-            <h2 className="section-heading">Solar systems, appliances and backup power.</h2>
+            <span className="eyebrow eyebrow-plain">Our shop</span>
+            <h2 className="section-heading">Solar &amp; home appliances.</h2>
           </div>
           <p className="text-lead lg:max-w-md lg:justify-self-end">Factory-direct equipment with professional installation available on every order.</p>
         </div>
