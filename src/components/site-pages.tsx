@@ -6,7 +6,6 @@ import { PageFrame, PageHero } from "@/components/site-layout";
 import productsHero from "@/assets/products-hero-system.jpg";
 import newsHero from "@/assets/news-hero-rooftop.jpg";
 import { QuoteForm } from "@/components/quote-form";
-import { ApplianceStrip } from "@/components/appliance-strip";
 import { ProductShop } from "@/components/product-shop";
 import { POST_CATEGORIES, categoryLabel, type PostCategory, type PostSummary } from "@/lib/post-types";
 import impactHero from "@/assets/impact-family-living-room-clean.jpg";
@@ -290,8 +289,6 @@ export function ProductsPage() {
           <p className="about-hero-description max-w-2xl">RUWATA supplies complete solar systems and the equipment that brings them together, plus air conditioners, freezers, TVs and generators. System size depends on your power needs, not a one-size-fits-all runtime or promise.</p>
         </div>
       </section>
-
-      <ApplianceStrip eyebrow="More than solar" title="Shop ACs, freezers, TVs and generators too." />
 
       <ProductShop />
 
