@@ -134,8 +134,8 @@ function ArticlePage() {
               <Link to="/">Home</Link>
               <ChevronRight className="size-3.5" aria-hidden="true" />
               <Link to="/news">News</Link>
-              <ChevronRight className="size-3.5" aria-hidden="true" />
-              <span className="line-clamp-1 text-primary-foreground">{post.title}</span>
+              <ChevronRight className="hidden size-3.5 sm:block" aria-hidden="true" />
+              <span className="hidden line-clamp-1 text-primary-foreground sm:block">{post.title}</span>
             </nav>
             <Link to="/news" search={{ category: post.category }} className="article-pill w-fit">{categoryLabel(post.category)}</Link>
             <h1 className="article-title">{post.title}</h1>
