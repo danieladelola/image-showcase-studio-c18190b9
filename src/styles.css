@@ -1438,7 +1438,7 @@
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--color-border);
   background: var(--color-background);
-  @media (max-width: 64rem) { display: flex; }
+  @media (min-width: 64rem) { justify-content: flex-end; padding: 0.75rem 2rem; }
 }
 
 @utility admin-content {
