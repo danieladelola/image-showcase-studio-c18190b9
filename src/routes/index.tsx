@@ -4,6 +4,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { PageFrame } from "@/components/site-layout";
 import { ProductShop } from "@/components/product-shop";
+import { ApplianceStrip } from "@/components/appliance-strip";
 import { shopQuery } from "@/lib/shop.queries";
 import heroImageSrc from "@/assets/ruwata-home-hero-shop.webp";
 const heroImage = { url: heroImageSrc };
@@ -18,14 +19,14 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "RUWATA | Solar Power Systems for Nigerian Homes & Businesses" },
-      { name: "description", content: "RUWATA plans, supplies, and installs complete solar power systems designed around your needs in Nigeria." },
-      { name: "keywords", content: "solar power systems Nigeria, solar installation company, home solar Nigeria, business solar, inverter and battery, RUWATA" },
+      { name: "description", content: "RUWATA plans, supplies, and installs complete solar power systems in Nigeria, and sells air conditioners, freezers, TVs and generators." },
+      { name: "keywords", content: "solar power systems Nigeria, solar installation company, home solar Nigeria, business solar, inverter and battery, buy AC Nigeria, chest freezer, smart TV, petrol generator, RUWATA" },
       { property: "og:title", content: "RUWATA | Reliable Solar Power for Homes and Businesses" },
-      { property: "og:description", content: "A solar system that fits your needs, from planning to installation and handover." },
+      { property: "og:description", content: "Solar systems that fit your needs, plus air conditioners, freezers, TVs and generators." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "RUWATA | Reliable Solar Power for Homes and Businesses" },
-      { name: "twitter:description", content: "Complete solar systems supplied and installed across Nigeria." },
+      { name: "twitter:description", content: "Solar systems, ACs, freezers, TVs and generators across Nigeria." },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(shopQuery),
@@ -67,9 +68,9 @@ function HomePage() {
         <div className="home-hero-bg-shade" aria-hidden="true" />
         <div className="site-wrap home-hero">
           <div className="grid content-center justify-items-start gap-6 rise-in home-hero-copy">
-            <span className="font-heading text-sm font-bold uppercase tracking-wider text-amber">Quality Solar Systems.</span>
+            <span className="font-heading text-sm font-bold uppercase tracking-wider text-amber">Solar Systems &amp; Home Appliances</span>
             <h1 className="home-hero-title">Power Your World with Reliable Solar Solutions</h1>
-            <p className="max-w-xl text-lg leading-8 text-muted-foreground">Enjoy greater control over your electricity supply with Ruwata.</p>
+            <p className="max-w-xl text-lg leading-8 text-muted-foreground">Enjoy greater control over your electricity supply with Ruwata — solar systems, air conditioners, freezers, TVs and generators, all in one place.</p>
             <div className="flex flex-wrap gap-3">
               <Button asChild className="h-12 rounded-full px-7 font-bold">
                 <Link to="/contact-us">Request a Solar Quote <ArrowRight aria-hidden="true" /></Link>
@@ -94,6 +95,8 @@ function HomePage() {
       </section>
 
       <ProductShop limit={8} />
+
+      <ApplianceStrip />
 
       <section className="section-space bg-card">
         <div className="site-wrap">
@@ -122,7 +125,7 @@ function HomePage() {
             <div className="grid max-w-2xl gap-4">
               <span className="eyebrow eyebrow-plain">The system, made complete</span>
               <h2 className="section-heading">Everything working together.</h2>
-              <p className="text-lead">From high-performance solar panels and inverters to reliable battery storage systems, we help you find the right energy solution for your needs and budget. Our products come directly from factories, bringing quality, competitive value, and dependable energy technology closer to you.</p>
+              <p className="text-lead">From high-performance solar panels and inverters to reliable battery storage systems, we help you find the right energy solution for your needs and budget. Our products come directly from factories, bringing quality, competitive value, and dependable energy technology closer to you. We also sell air conditioners, freezers, TVs and generators.</p>
             </div>
             <Button asChild variant="outline" className="h-11 rounded-full px-6 font-bold">
               <Link to="/our-products">All products <ArrowRight aria-hidden="true" /></Link>
