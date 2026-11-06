@@ -125,7 +125,7 @@ function HomePage() {
             <div className="grid max-w-2xl gap-4">
               <span className="eyebrow eyebrow-plain">The system, made complete</span>
               <h2 className="section-heading">Everything working together.</h2>
-              <p className="text-lead">From high-performance solar panels and inverters to reliable battery storage systems, we help you find the right energy solution for your needs and budget. Our products come directly from factories, bringing quality, competitive value, and dependable energy technology closer to you. We also sell air conditioners, freezers, TVs and generators.</p>
+              <p className="text-lead">Solar panels, inverters and batteries — plus air conditioners, freezers, TVs and generators — sourced direct from factories at fair prices.</p>
             </div>
             <Button asChild variant="outline" className="h-11 rounded-full px-6 font-bold">
               <Link to="/our-products">All products <ArrowRight aria-hidden="true" /></Link>
