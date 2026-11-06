@@ -1,0 +1,65 @@
+[
+  {
+    "capability": "code (pages, layout, shop, product detail, checkout, admin login/dashboard, tests)",
+    "source": "github:danieladelola/image-showcase-studio-08531cf8",
+    "outcome": "copied",
+    "status": "verified",
+    "next_action": null
+  },
+  {
+    "capability": "images and logos",
+    "source": "src/assets",
+    "outcome": "copied",
+    "status": "verified",
+    "next_action": null
+  },
+  {
+    "capability": "database (self-hosted Postgres)",
+    "source": "DATABASE_URL / DATABASE_SSL",
+    "outcome": "kept user's own database by user choice",
+    "status": "verified",
+    "next_action": null
+  },
+  {
+    "capability": "existing records (catalogue, admin user, images)",
+    "source": "user's Postgres",
+    "outcome": "kept in place",
+    "status": "verified",
+    "next_action": null
+  },
+  {
+    "capability": "quote form write",
+    "source": "src/lib/quote-requests.functions.ts",
+    "outcome": "preserved",
+    "status": "verified",
+    "next_action": null
+  },
+  {
+    "capability": "admin sign-in, checkout, newsletter",
+    "source": "src/lib/*.functions.ts",
+    "outcome": "preserved",
+    "status": "pending",
+    "next_action": "User tries admin sign-in and a test order"
+  },
+  {
+    "capability": "published site database access",
+    "source": "Worker runtime",
+    "outcome": "preserved",
+    "status": "pending",
+    "next_action": "Check after publishing"
+  },
+  {
+    "capability": "Docker/Coolify deployment files",
+    "source": "Dockerfile, docker-compose.yml",
+    "outcome": "kept",
+    "status": "verified",
+    "next_action": null
+  },
+  {
+    "capability": "database connection in this project",
+    "source": "DATABASE_URL / DATABASE_SSL",
+    "outcome": "kept user's own database",
+    "status": "verified",
+    "next_action": null
+  }
+]
