@@ -1649,8 +1649,8 @@
 /* Two-per-row product cards on phones: stack the buttons and shrink text. */
 @utility shop-card-foot {
   @media (max-width: 639px) {
-    & > .grid { grid-template-columns: 1fr; gap: 0.4rem; }
-    & a, & button { min-height: 2.4rem; padding-inline: 0.5rem; font-size: 0.75rem; white-space: normal; }
+    /* Add to Cart / Buy Now stack full-width on phones (set in PurchaseActions); keep labels on one line. */
+    & button { white-space: nowrap; }
     & p { font-size: 0.95rem; }
     & .shop-stock { font-size: 0.68rem; }
   }

@@ -103,16 +103,17 @@ export function PurchaseActions({
 }) {
   const navigate = useNavigate();
   const canBuy = purchaseState(p) === "buy";
-  const tall = layout === "detail" ? "h-13 text-base" : "h-11";
+  // Cards are narrow on phones (2 per row) and on 4-per-row laptops, so stack the buttons there.
+  const tall = layout === "detail" ? "h-13 text-base" : "h-10 px-2 text-sm sm:h-11 sm:px-3";
 
   return (
     <div className="grid gap-2">
-      <div className={cn("grid gap-2.5", layout === "detail" ? "sm:grid-cols-2" : "grid-cols-2")}>
+      <div className={cn("grid gap-2.5", layout === "detail" ? "sm:grid-cols-2" : "grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2")}>
         <Button
           type="button"
           variant="outline"
           disabled={!canBuy}
-          className={cn("rounded-xl font-bold", tall)}
+          className={cn("min-w-0 whitespace-nowrap rounded-xl font-bold", tall)}
           onClick={() => {
             addProductToCart(p, quantity);
             toast.success(`${p.name} added to your cart`, {
@@ -125,7 +126,7 @@ export function PurchaseActions({
         <Button
           type="button"
           disabled={!canBuy}
-          className={cn("rounded-xl font-bold", tall)}
+          className={cn("min-w-0 whitespace-nowrap rounded-xl font-bold", tall)}
           onClick={() => navigate({ to: "/checkout", search: { buy: p.slug, qty: quantity } })}
         >
           <Zap aria-hidden="true" /> Buy Now
