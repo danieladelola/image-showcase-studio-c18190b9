@@ -140,6 +140,70 @@ const steps: Array<{ name: string; sql: string }> = [
       CREATE INDEX IF NOT EXISTS posts_public_idx ON posts (status, published_at DESC);
     `,
   },
+  {
+    // Starter articles so the News page isn't empty; fully editable/deletable in Admin → News.
+    name: "2026-11-starter-news-posts",
+    sql: `
+      INSERT INTO posts (title, slug, excerpt, content_html, category, tags, cover_image_url, cover_image_alt, author_name,
+                         status, is_featured, reading_minutes, published_at, seo_title, seo_description, focus_keyword, seo_keywords)
+      VALUES
+      ('How to Choose the Right Solar System Size for Your Home',
+       'choose-right-solar-system-size',
+       'Not sure whether you need a 2.5 kVA or a 10 kVA system? Here is a simple way to work out the right size for your home and budget.',
+       '<p>Picking the right solar system starts with knowing how much power you actually use. A system that is too small leaves you in the dark at night; one that is too big costs more than you need to spend.</p>
+<h2>1. List your appliances</h2>
+<p>Write down everything you want to run — lights, fans, TV, fridge or freezer, air conditioner — and how many hours a day each one runs. Multiply the wattage by the hours to get daily energy use.</p>
+<h2>2. Match the inverter</h2>
+<p>Add up the wattage of everything that may run at the same time. Your inverter should handle that load with some room to spare. Most homes are well served by a 3.5–5 kVA hybrid inverter; offices and shops often need 10 kVA.</p>
+<h2>3. Size your batteries</h2>
+<p>Batteries carry you through the night. A 5 kWh lithium battery comfortably powers lights, fans and a TV overnight, while a 10 kWh battery adds room for a freezer or a small air conditioner.</p>
+<h2>4. Add enough panels</h2>
+<p>Your panels need to recharge the batteries and run the home during the day. As a rule of thumb, plan for about 1.5 times your daily energy use in panel capacity.</p>
+<p>Not sure where to start? Our team will visit, assess your load and recommend the right package — free of charge.</p>',
+       'guides', ARRAY['solar sizing','inverter','batteries'],
+       '/api/public/images/00000000-0000-4000-a000-000000000001', 'Home solar power system with inverter and batteries', 'RUWATA Team',
+       'published', true, 3, now() - interval '2 days',
+       'How to Choose the Right Solar System Size | RUWATA',
+       'A simple guide to sizing your solar panels, inverter and batteries for your home and budget.',
+       'solar system size', ARRAY['solar system size','inverter size','solar batteries']),
+
+      ('Now Available: Air Conditioners, Freezers, TVs and Generators',
+       'now-selling-ac-freezers-tvs-generators',
+       'RUWATA now sells home appliances alongside solar — air conditioners, deep freezers, smart TVs and generators, all with delivery.',
+       '<p>We are excited to announce that RUWATA now offers more than solar. You can now shop air conditioners, chest deep freezers, smart LED TVs and petrol generators right on our website.</p>
+<h2>Why we added appliances</h2>
+<p>Many of our customers asked for one trusted place to buy both their power system and the appliances it runs. Now you can get everything together, with one delivery and one point of support.</p>
+<h2>Works great with solar</h2>
+<p>Our energy-efficient air conditioners and freezers pair well with a RUWATA solar system, so you can enjoy cooling and cold storage without worrying about fuel or grid outages.</p>
+<p>Visit the shop to see current prices — every item can be added to your cart or bought instantly.</p>',
+       'company', ARRAY['air conditioner','freezer','tv','generator'],
+       '/api/public/images/7c91dce2-ced9-4b7f-a02c-c701a9af9d11', 'Split air conditioner', 'RUWATA Team',
+       'published', false, 2, now() - interval '5 days',
+       'Air Conditioners, Freezers, TVs & Generators Now at RUWATA',
+       'Shop air conditioners, deep freezers, smart TVs and generators alongside solar systems at RUWATA.',
+       'home appliances', ARRAY['air conditioner','deep freezer','smart tv','generator']),
+
+      ('Lithium vs Lead-Acid Batteries: Which Is Better for Solar?',
+       'lithium-vs-lead-acid-solar-batteries',
+       'Lithium batteries cost more up front but last far longer. We compare lifespan, maintenance and real cost over time.',
+       '<p>Your battery is one of the most important parts of a solar system. The two main choices are lithium and lead-acid — and the difference matters.</p>
+<h2>Lifespan</h2>
+<p>A good lithium battery lasts 6,000 cycles or more — often over 10 years. Lead-acid batteries typically last 2–4 years before they need replacing.</p>
+<h2>Usable power</h2>
+<p>You can safely use about 90% of a lithium battery''s capacity, compared with around 50% for lead-acid. That means a smaller lithium battery can do the same job.</p>
+<h2>Maintenance</h2>
+<p>Lithium batteries need no topping up and no ventilation room. Lead-acid batteries need regular checks and can leak.</p>
+<h2>The verdict</h2>
+<p>Lithium costs more on day one but is usually cheaper over the life of your system. That is why every RUWATA package now ships with lithium storage.</p>',
+       'guides', ARRAY['batteries','lithium','solar storage'],
+       '/api/public/images/00000000-0000-4000-a000-000000000004', 'Lithium solar battery', 'RUWATA Team',
+       'published', false, 3, now() - interval '9 days',
+       'Lithium vs Lead-Acid Solar Batteries | RUWATA',
+       'Compare lithium and lead-acid solar batteries on lifespan, usable power, maintenance and long-term cost.',
+       'lithium battery', ARRAY['lithium battery','lead acid battery','solar battery'])
+      ON CONFLICT (slug) DO NOTHING;
+    `,
+  },
 ];
 
 export async function migrate(sql: Sql) {
