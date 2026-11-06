@@ -366,7 +366,6 @@ export function PostCard({ post, large }: { post: PostSummary; large?: boolean }
 }
 
 export function NewsPage({ posts, category }: { posts: PostSummary[]; category?: PostCategory | undefined }) {
-  const [first, ...rest] = posts;
   return (
     <PageFrame>
       <section className="about-hero">
@@ -393,10 +392,9 @@ export function NewsPage({ posts, category }: { posts: PostSummary[]; category?:
               ))}
             </nav>
           </div>
-          {first ? (
+          {posts.length ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="md:col-span-2 lg:col-span-3 grid"><PostCard post={first} large /></div>
-              {rest.map((p) => <PostCard key={p.id} post={p} />)}
+              {posts.map((p) => <PostCard key={p.id} post={p} />)}
             </div>
           ) : (
             <div className="grid gap-6 md:grid-cols-3">
