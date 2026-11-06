@@ -1,65 +1,37 @@
 [
   {
-    "capability": "code (pages, layout, shop, product detail, checkout, admin login/dashboard, tests)",
-    "source": "github:danieladelola/image-showcase-studio-08531cf8",
-    "outcome": "copied",
+    "capability": "code, images, tests, Docker/Coolify files",
+    "source": "github:danieladelola/image-showcase-studio-283a9ea4",
+    "outcome": "copied as-is (same Lovable TanStack template versions)",
     "status": "verified",
     "next_action": null
   },
   {
-    "capability": "images and logos",
-    "source": "src/assets",
-    "outcome": "copied",
-    "status": "verified",
-    "next_action": null
-  },
-  {
-    "capability": "database (self-hosted Postgres)",
+    "capability": "database (self-hosted Postgres on Coolify)",
     "source": "DATABASE_URL / DATABASE_SSL",
-    "outcome": "kept user's own database by user choice",
-    "status": "verified",
-    "next_action": null
+    "outcome": "kept user's own database (prior user choice recorded in source)",
+    "status": "pending",
+    "next_action": "User adds DATABASE_URL (public address) and DATABASE_SSL secrets"
   },
   {
-    "capability": "existing records (catalogue, admin user, images)",
+    "capability": "existing records (catalogue, orders, posts, admin users)",
     "source": "user's Postgres",
     "outcome": "kept in place",
-    "status": "verified",
-    "next_action": null
+    "status": "pending",
+    "next_action": "Verify shop and news pages load once the database is connected"
   },
   {
-    "capability": "quote form write",
-    "source": "src/lib/quote-requests.functions.ts",
-    "outcome": "preserved",
-    "status": "verified",
-    "next_action": null
-  },
-  {
-    "capability": "admin sign-in, checkout, newsletter",
+    "capability": "admin sign-in, checkout, newsletter, quote form",
     "source": "src/lib/*.functions.ts",
     "outcome": "preserved",
     "status": "pending",
-    "next_action": "User tries admin sign-in and a test order"
+    "next_action": "Verify after database connection"
   },
   {
-    "capability": "published site database access",
-    "source": "Worker runtime",
+    "capability": "Paystack payments + webhook",
+    "source": "PAYSTACK_SECRET_KEY, /api/public/paystack/webhook",
     "outcome": "preserved",
     "status": "pending",
-    "next_action": "Check after publishing"
-  },
-  {
-    "capability": "Docker/Coolify deployment files",
-    "source": "Dockerfile, docker-compose.yml",
-    "outcome": "kept",
-    "status": "verified",
-    "next_action": null
-  },
-  {
-    "capability": "database connection in this project",
-    "source": "DATABASE_URL / DATABASE_SSL",
-    "outcome": "kept user's own database",
-    "status": "verified",
-    "next_action": null
+    "next_action": "User adds Paystack test key when ready"
   }
 ]
