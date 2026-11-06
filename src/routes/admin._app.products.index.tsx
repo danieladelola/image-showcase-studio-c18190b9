@@ -153,7 +153,7 @@ function ProductsPage() {
             <option value="in_stock">In stock</option>
             <option value="out_of_stock">Out of stock</option>
             <option value="preorder">Pre-order</option>
-            <option value="quote">Quote only</option>
+            <option value="quote">No price yet</option>
           </select>
           <select aria-label="Sort" className="admin-input w-auto" value={sort} onChange={(e) => setSort(e.target.value as Sort)}>
             <option value="updated">Recently updated</option>
@@ -198,7 +198,7 @@ function ProductsPage() {
                       <td className="text-muted-foreground">{p.categoryName ?? "—"}</td>
                       <td className="whitespace-nowrap">
                         {price == null ? (
-                          <span className="text-muted-foreground">Quote only</span>
+                          <span className="font-bold text-destructive">No price yet</span>
                         ) : (
                           <span className="grid">
                             <span className="font-bold">{naira.format(price)}</span>
