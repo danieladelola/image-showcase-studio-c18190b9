@@ -36,8 +36,8 @@ describe("selling price", () => {
   it("uses the sale price when it is below the regular price", () => {
     expect(sellingPrice({ price: 2_150_000, salePrice: 1_950_000, quoteOnly: false })).toBe(1_950_000);
   });
-  it("has no price for quote-only products", () => {
-    expect(sellingPrice({ price: 500_000, salePrice: null, quoteOnly: true })).toBeNull();
+  it("ignores the old quote-only flag: a priced product always has a selling price", () => {
+    expect(sellingPrice({ price: 500_000, salePrice: null, quoteOnly: true })).toBe(500_000);
   });
 });
 
@@ -46,7 +46,8 @@ describe("who can buy", () => {
     expect(purchaseState(entry())).toBe("buy");
     expect(purchaseState(entry({ status: "draft" }))).toBe("unavailable");
     expect(purchaseState(entry({ status: "archived" }))).toBe("unavailable");
-    expect(purchaseState(entry({ price: null, quoteOnly: true }))).toBe("quote");
+    expect(purchaseState(entry({ quoteOnly: true }))).toBe("buy");
+    expect(purchaseState(entry({ price: null }))).toBe("unavailable");
     expect(purchaseState(entry({ trackStock: true, stockQuantity: 0 }))).toBe("unavailable");
     expect(purchaseState(entry({ availability: "out_of_stock" }))).toBe("unavailable");
   });
@@ -82,8 +83,8 @@ describe("server pricing", () => {
     expect(r.installationFee).toBe(120_000);
   });
 
-  it("refuses quote-only products and quantities above tracked stock", () => {
-    expect(() => priceOrder([{ productId: ID_A, quantity: 1 }], new Map([[ID_A, entry({ quoteOnly: true })]]), delivery, settings)).toThrow(OrderError);
+  it("refuses products without a price and quantities above tracked stock", () => {
+    expect(() => priceOrder([{ productId: ID_A, quantity: 1 }], new Map([[ID_A, entry({ price: null })]]), delivery, settings)).toThrow(OrderError);
     expect(() =>
       priceOrder([{ productId: ID_A, quantity: 3 }], new Map([[ID_A, entry({ trackStock: true, stockQuantity: 2 })]]), delivery, settings),
     ).toThrow(/Only 2/);
@@ -105,9 +106,9 @@ describe("product form rules", () => {
     expect(productInputSchema.safeParse({ ...base, salePrice: 1_100_000 }).success).toBe(false);
     expect(productInputSchema.safeParse({ ...base, salePrice: 1_000_000 }).success).toBe(true);
   });
-  it("needs a price unless the product is quote-only", () => {
+  it("always needs a price (there is no quote-only option)", () => {
     expect(productInputSchema.safeParse({ ...base, price: null }).success).toBe(false);
-    expect(productInputSchema.safeParse({ ...base, price: null, quoteOnly: true }).success).toBe(true);
+    expect(productInputSchema.safeParse({ ...base, price: null, quoteOnly: true }).success).toBe(false);
   });
 });
 
