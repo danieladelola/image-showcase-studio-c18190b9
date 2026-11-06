@@ -43,5 +43,5 @@
 - [x] Shorter top banner on Our Impact, About Us, Our Products, News, Contact Us.
 
 ## Nov 6 2026
-- [ ] Rebrand the news article (post details) page.
-- [ ] Shorten the homepage shop heading "Solar systems, appliances and backup power."
+- [x] Rebrand the news article (post details) page.
+- [x] Shorten the homepage shop heading "Solar systems, appliances and backup power."
