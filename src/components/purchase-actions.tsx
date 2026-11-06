@@ -103,7 +103,8 @@ export function PurchaseActions({
 }) {
   const navigate = useNavigate();
   const canBuy = purchaseState(p) === "buy";
-  const tall = layout === "detail" ? "h-13 text-base" : "h-11";
+  // Cards are narrow on phones (2 per row) and on 4-per-row laptops, so stack the buttons there.
+  const tall = layout === "detail" ? "h-13 text-base" : "h-10 px-2 text-sm sm:h-11 sm:px-3";
 
   return (
     <div className="grid gap-2">
