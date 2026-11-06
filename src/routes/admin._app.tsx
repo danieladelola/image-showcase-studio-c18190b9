@@ -66,27 +66,30 @@ function AdminLayout() {
             </Link>
           ))}
         </nav>
-        <div className="mt-auto grid gap-1 border-t border-footer-line pt-4">
-          <a href="/" target="_blank" rel="noopener noreferrer" className="admin-side-link">
-            <ExternalLink aria-hidden="true" /> View website
-          </a>
-          <button type="button" onClick={signOut} className="admin-side-link w-full text-left">
-            <LogOut aria-hidden="true" /> Sign out
-          </button>
-          <div className="mt-3 px-3">
-            <p className="truncate text-sm font-bold">{admin.name}</p>
-            <p className="truncate text-xs text-footer-muted">{admin.email}</p>
-          </div>
-        </div>
       </aside>
 
       <div className="min-w-0">
         <header className="admin-topbar">
-          <Button variant="outline" size="icon" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
-            <Menu aria-hidden="true" />
-          </Button>
-          <img src={logoSrc} alt="RUWATA" className="brand-logo w-28" />
-          <span className="w-10" />
+          <div className="flex items-center gap-3 lg:hidden">
+            <Button variant="outline" size="icon" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
+              <Menu aria-hidden="true" />
+            </Button>
+            <img src={logoSrc} alt="RUWATA" className="brand-logo w-28" />
+          </div>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Button asChild variant="ghost" size="sm">
+              <a href="/" target="_blank" rel="noopener noreferrer">
+                <ExternalLink aria-hidden="true" /> <span className="hidden sm:inline">View website</span>
+              </a>
+            </Button>
+            <div className="hidden border-l border-border pl-4 text-right md:block">
+              <p className="max-w-48 truncate text-sm font-bold">{admin.name}</p>
+              <p className="max-w-48 truncate text-xs text-muted-foreground">{admin.email}</p>
+            </div>
+            <Button variant="outline" size="sm" onClick={signOut}>
+              <LogOut aria-hidden="true" /> <span className="hidden sm:inline">Sign out</span>
+            </Button>
+          </div>
         </header>
         <main className="admin-content">
           <Outlet />
