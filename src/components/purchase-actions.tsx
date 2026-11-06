@@ -113,7 +113,7 @@ export function PurchaseActions({
           type="button"
           variant="outline"
           disabled={!canBuy}
-          className={cn("rounded-xl font-bold", tall)}
+          className={cn("min-w-0 whitespace-nowrap rounded-xl font-bold", tall)}
           onClick={() => {
             addProductToCart(p, quantity);
             toast.success(`${p.name} added to your cart`, {
@@ -126,7 +126,7 @@ export function PurchaseActions({
         <Button
           type="button"
           disabled={!canBuy}
-          className={cn("rounded-xl font-bold", tall)}
+          className={cn("min-w-0 whitespace-nowrap rounded-xl font-bold", tall)}
           onClick={() => navigate({ to: "/checkout", search: { buy: p.slug, qty: quantity } })}
         >
           <Zap aria-hidden="true" /> Buy Now
