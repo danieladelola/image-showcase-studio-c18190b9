@@ -48,7 +48,7 @@ export function ImpactPage() {
         <div className="site-wrap about-hero-copy">
           <span className="eyebrow eyebrow-plain text-amber">Our Impact</span>
           <h1 className="about-hero-title">Power that helps daily life keep moving.</h1>
-          <p className="about-hero-description max-w-2xl">Solar can help keep essential appliances running and reduce dependence on generators. RUWATA starts with what a customer needs and plans a complete system around it — and supplies the ACs, freezers, TVs and generators homes rely on.</p>
+          <p className="about-hero-description max-w-2xl">Solar can help keep essential appliances running and reduce dependence on generators. RUWATA starts with what a customer needs and plans a complete system around it — and supplies the ACs, freezers, TVs, generators, pumping machines and solar generators homes rely on.</p>
         </div>
       </section>
 
@@ -150,8 +150,8 @@ const aboutReasons = [
 ];
 
 const aboutFaqs = [
-  ["What does Ruwata offer?", "We provide factory-direct solar products and complete solar energy systems for residential and commercial customers. We also sell air conditioners, freezers, TVs and generators."],
-  ["Do you sell air conditioners, freezers, TVs and generators?", "Yes. Alongside solar equipment, you can buy air conditioners, chest freezers, smart TVs and petrol generators in our shop with Add to Cart or Buy Now."],
+  ["What does Ruwata offer?", "We provide factory-direct solar products and complete solar energy systems for residential and commercial customers. We also sell air conditioners, freezers, TVs, generators, pumping machines and solar generators."],
+  ["Do you sell air conditioners, freezers, TVs and generators?", "Yes. Alongside solar equipment, you can buy air conditioners, chest freezers, smart TVs, petrol generators, pumping machines and solar generators in our shop with Add to Cart or Buy Now."],
   ["Can I buy a complete solar system?", "Yes. We offer complete solar packages with suitable components based on your energy requirements."],
   ["Are your products factory-direct?", "Yes. Our solar equipment is sourced directly from factories."],
   ["Do you supply solar products for businesses?", "Yes. Our solutions serve small businesses, offices, and larger commercial establishments."],
@@ -186,7 +186,7 @@ export function AboutPage() {
           <div className="grid content-start justify-items-start gap-5">
             <span className="eyebrow eyebrow-plain">Who we are</span>
             <h2 className="section-heading">Reliable electricity belongs in everyday life.</h2>
-            <p className="text-lead">At Ruwata, we believe reliable electricity is essential to comfortable living, business growth, and everyday productivity. We are a solar energy solutions company dedicated to providing quality, factory-direct solar products and complete power systems for residential and commercial customers, alongside air conditioners, freezers, TVs and generators.</p>
+            <p className="text-lead">At Ruwata, we believe reliable electricity is essential to comfortable living, business growth, and everyday productivity. We are a solar energy solutions company dedicated to providing quality, factory-direct solar products and complete power systems for residential and commercial customers, alongside air conditioners, freezers, TVs, generators, pumping machines and solar generators.</p>
             <p className="text-lead">Every customer has unique electricity needs. That is why we help you identify suitable solar panels, inverters, batteries, and other essential components — and by sourcing directly from factories, we make dependable solar technology more accessible at competitive value.</p>
             <ul className="mt-2 grid w-full gap-3 sm:grid-cols-2">
               {aboutHighlights.map(({ Icon, label }) => (
@@ -286,7 +286,7 @@ export function ProductsPage() {
         <div className="site-wrap about-hero-copy">
           <span className="eyebrow eyebrow-plain text-amber">Our Products</span>
           <h1 className="about-hero-title">The right system starts with what you need to power.</h1>
-          <p className="about-hero-description max-w-2xl">RUWATA supplies complete solar systems and the equipment that brings them together, plus air conditioners, freezers, TVs and generators. System size depends on your power needs, not a one-size-fits-all runtime or promise.</p>
+          <p className="about-hero-description max-w-2xl">RUWATA supplies complete solar systems and the equipment that brings them together, plus air conditioners, freezers, TVs, generators, pumping machines and solar generators. System size depends on your power needs, not a one-size-fits-all runtime or promise.</p>
         </div>
       </section>
 
@@ -449,7 +449,7 @@ export function ContactPage() {
             <p className="text-lead">Our team will help you explore suitable options.</p>
             <div className="mt-2 grid gap-4 border-t border-border pt-5 text-sm">
               <p className="flex items-center gap-3"><Sun aria-hidden="true" className="size-5 shrink-0 text-brand" />Solar panels, inverters, batteries, and complete systems</p>
-              <p className="flex items-center gap-3"><PlugZap aria-hidden="true" className="size-5 shrink-0 text-brand" />Air conditioners, freezers, TVs, and generators</p>
+              <p className="flex items-center gap-3"><PlugZap aria-hidden="true" className="size-5 shrink-0 text-brand" />Air conditioners, freezers, TVs, generators, pumping machines, and solar generators</p>
               <p className="flex items-center gap-3"><Building2 aria-hidden="true" className="size-5 text-brand" />Homes, apartments, offices, and businesses</p>
             </div>
             <div className="mt-4 grid w-full gap-4">
