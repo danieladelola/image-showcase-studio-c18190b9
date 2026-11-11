@@ -13,6 +13,7 @@ const installImage = { url: installImageSrc };
 import teamImageSrc from "@/assets/ruwata-field-team.png";
 const teamImage = { url: teamImageSrc };
 import appliancesImageSrc from "@/assets/home-appliances-card.jpg";
+import pumpingImageSrc from "@/assets/pumping-solar-generator-card.jpg";
 import technicianImageSrc from "@/assets/ruwata-solar-technician.png";
 const technicianImage = { url: technicianImageSrc };
 
@@ -44,7 +45,8 @@ const solutions = [
 const products = [
   { title: "Solar panels", detail: "Capture energy from daylight.", image: installImage.url, alt: "RUWATA technicians installing solar panels" },
   { title: "Inverters", detail: "Convert solar energy into usable power.", image: technicianImage.url, alt: "Solar inverter being inspected by a RUWATA technician" },
-  { title: "Home appliances", detail: "ACs, freezers, TVs, generators and pumping machines.", image: appliancesImageSrc, alt: "Living room with air conditioner, smart TV, chest freezer and generator" },
+  { title: "Home appliances", detail: "ACs, freezers, TVs and generators.", image: appliancesImageSrc, alt: "Living room with air conditioner, smart TV, chest freezer and generator" },
+  { title: "Pumping & solar generators", detail: "Water pumps and portable solar power.", image: pumpingImageSrc, alt: "Portable solar generator with foldable solar panel next to a blue water pumping machine" },
 ];
 
 const trustPoints = [
@@ -132,7 +134,7 @@ function HomePage() {
               <Link to="/our-products">All products <ArrowRight aria-hidden="true" /></Link>
             </Button>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {products.map((product) => (
               <Link to="/our-products" key={product.title} className="home-product group">
                 <img src={product.image} alt={product.alt} className="home-product-image" loading="lazy" />
