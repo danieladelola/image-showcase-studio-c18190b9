@@ -184,7 +184,7 @@ function ArticlePage() {
               <div className="article-cta">
                 <Sun className="size-7 text-amber" aria-hidden="true" />
                 <h2 className="font-heading text-xl font-semibold leading-snug">Ready to power your home?</h2>
-                <p className="text-sm leading-6 text-primary-foreground/75">Shop solar systems, inverters and batteries — plus air conditioners, freezers, TVs and generators.</p>
+                <p className="text-sm leading-6 text-primary-foreground/75">Shop solar systems, inverters and batteries — plus air conditioners, freezers, TVs, generators, pumping machines and solar generators.</p>
                 <Button asChild className="mt-1 h-11 rounded-full font-bold"><Link to="/our-products">Shop products <ArrowRight aria-hidden="true" /></Link></Button>
                 <Link to="/contact-us" className="text-center text-sm font-bold text-amber hover:underline">Talk to our team</Link>
               </div>

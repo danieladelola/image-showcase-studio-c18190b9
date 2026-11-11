@@ -20,14 +20,14 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "RUWATA | Solar Power Systems for Nigerian Homes & Businesses" },
-      { name: "description", content: "RUWATA plans, supplies, and installs complete solar power systems in Nigeria, and sells air conditioners, freezers, TVs and generators." },
+      { name: "description", content: "RUWATA plans, supplies, and installs complete solar power systems in Nigeria, and sells air conditioners, freezers, TVs, generators, pumping machines and solar generators." },
       { name: "keywords", content: "solar power systems Nigeria, solar installation company, home solar Nigeria, business solar, inverter and battery, buy AC Nigeria, chest freezer, smart TV, petrol generator, RUWATA" },
       { property: "og:title", content: "RUWATA | Reliable Solar Power for Homes and Businesses" },
-      { property: "og:description", content: "Solar systems that fit your needs, plus air conditioners, freezers, TVs and generators." },
+      { property: "og:description", content: "Solar systems that fit your needs, plus ACs, freezers, TVs, generators, pumping machines and solar generators." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "RUWATA | Reliable Solar Power for Homes and Businesses" },
-      { name: "twitter:description", content: "Solar systems, ACs, freezers, TVs and generators across Nigeria." },
+      { name: "twitter:description", content: "Solar systems, ACs, freezers, TVs, generators and pumping machines across Nigeria." },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(shopQuery),
@@ -44,7 +44,7 @@ const solutions = [
 const products = [
   { title: "Solar panels", detail: "Capture energy from daylight.", image: installImage.url, alt: "RUWATA technicians installing solar panels" },
   { title: "Inverters", detail: "Convert solar energy into usable power.", image: technicianImage.url, alt: "Solar inverter being inspected by a RUWATA technician" },
-  { title: "Home appliances", detail: "ACs, freezers, TVs and generators.", image: appliancesImageSrc, alt: "Living room with air conditioner, smart TV, chest freezer and generator" },
+  { title: "Home appliances", detail: "ACs, freezers, TVs, generators and pumping machines.", image: appliancesImageSrc, alt: "Living room with air conditioner, smart TV, chest freezer and generator" },
 ];
 
 const trustPoints = [
@@ -71,7 +71,7 @@ function HomePage() {
           <div className="grid content-center justify-items-start gap-6 rise-in home-hero-copy">
             <span className="font-heading text-sm font-bold uppercase tracking-wider text-amber">Solar Systems &amp; Home Appliances</span>
             <h1 className="home-hero-title">Power Your World with Reliable Solar Solutions</h1>
-            <p className="max-w-xl text-lg leading-8 text-muted-foreground">Enjoy greater control over your electricity supply with Ruwata — solar systems, air conditioners, freezers, TVs and generators, all in one place.</p>
+            <p className="max-w-xl text-lg leading-8 text-muted-foreground">Enjoy greater control over your electricity supply with Ruwata — solar systems, air conditioners, freezers, TVs, generators, pumping machines and solar generators, all in one place.</p>
             <div className="flex flex-wrap gap-3">
               <Button asChild className="h-12 rounded-full px-7 font-bold">
                 <Link to="/contact-us">Request a Solar Quote <ArrowRight aria-hidden="true" /></Link>
@@ -126,7 +126,7 @@ function HomePage() {
             <div className="grid max-w-2xl gap-4">
               <span className="eyebrow eyebrow-plain">The system, made complete</span>
               <h2 className="section-heading">Everything working together.</h2>
-              <p className="text-lead">Solar panels, inverters and batteries — plus air conditioners, freezers, TVs and generators — sourced direct from factories at fair prices.</p>
+              <p className="text-lead">Solar panels, inverters and batteries — plus air conditioners, freezers, TVs, generators, pumping machines and solar generators — sourced direct from factories at fair prices.</p>
             </div>
             <Button asChild variant="outline" className="h-11 rounded-full px-6 font-bold">
               <Link to="/our-products">All products <ArrowRight aria-hidden="true" /></Link>
